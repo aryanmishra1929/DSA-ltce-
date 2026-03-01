@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<stdlib.h>
+# define Max 5
+    int queue[Max],F=-1,R=-1;
+    void insert()
+        {
+            int num;
+            printf("\n Enter the element to be inserted ");
+            scanf("%d",&num);
+            if(R==Max -1)
+                {
+                    printf("\n Overflow");
+                }
+            else if(F==-1 && R==-1)
+                {
+                    F=R=0;
+                }
+            else
+                {
+                    R=R+1;
+                }
+            queue[R]=num;
+            printf("\n Element Inserted");
+        }
+    void delete()
+        {
+            int num;
+            if(F==-1||F>R)
+                {
+                    printf("\nUnderflow");
+                }
+            else
+                {
+                    num = queue[F];
+                    printf("The deleted element is: %d",num);
+                }
+            F = F+1;
+        }
+    void display()
+        {
+            printf("\nQueue:");
+                for(int i=F; i<=R;i++)
+                    {
+                        printf("\n %d",queue[i]);
+                    }
+        }
+    int main()
+        {
+            int choice;
+            while(1)
+                {
+                    printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit");
+                    printf("\nEnter your choice: ");
+                    scanf("%d",&choice);
+                    switch(choice)
+                        {
+                            case 1: insert();
+                            break;
+                            case 2:delete();
+                            break;
+                            case 3:display();
+                            break;
+                            case 4: exit(0);
+                            break;
+
+                            default:printf("\n Invalid choice");
+                        }
+                }
+        }
